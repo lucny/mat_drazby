@@ -52,6 +52,7 @@ class Exekutor(models.Model):
                                               'blank': 'Pole nesmí být prázdné'})
     telefon = models.CharField(max_length=16, verbose_name='Telefon exekutora', help_text='Zadejte telefon v podobě: +420 777 777 777',
                                blank=True, validators=[TELEFON_REGEX])
+    urad = models.ForeignKey('Urad', on_delete=models.CASCADE, verbose_name='Exekutorský úřad')
 
     class Meta:
         ordering = ['prijmeni', 'jmeno']
