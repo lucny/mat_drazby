@@ -1,27 +1,17 @@
-h3 {
+body {
+    background-color: #ddd;
+}
+
+h1 {
     text-transform: uppercase;
-    color: #721c24;
-    border-bottom: 2px solid #721c24;
+    color: #500d11;
+    font-weight: bolder !important;
 }
 
-.kontakt {
-    background-color: #eee;
-    font-size: 90%;
+@media screen and (min-width: 1200px) {
+    header {
+        background-image: url('../img/drazba-logo.png');
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
 }
-
-.kontakt p {
-    margin: 0;
-}
-
-.kontakt h4 {
-    text-align: center;
-    color: gray;
-    font-size: 1.1em;
-    padding: 10px;
-    border-bottom: 1px dotted gray;
-}
-
-.vybaveni img {
-    max-width: 30px;
-}
-

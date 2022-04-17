@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <title>Dražby</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
+<body>
+{% include 'page/header.html' %}
+<main class="container bg-white">
+    {% block content %}{% endblock %}
+</main>
+{% include 'page/footer.html' %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static '/bootstrap/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static '/bootstrap/popper.min.js' %}"></script>
+<script src="{% static '/bootstrap/bootstrap.min.j' %}"></script>
+</body>
+</html>
