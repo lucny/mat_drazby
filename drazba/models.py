@@ -72,6 +72,7 @@ class Predmet(models.Model):
     zacatek_drazby = models.DateTimeField(verbose_name='Datum a čas začátku dražby')
     konec_drazby = models.DateTimeField(verbose_name='Datum a čas konce dražby')
     misto = models.ForeignKey('Misto', on_delete=models.CASCADE, verbose_name='Místo')
+    exekutor = models.ForeignKey('Exekutor', on_delete=models.CASCADE, verbose_name='Exekutor', null=True, blank=True)
 
     class Meta:
         ordering = ['zacatek_drazby']
