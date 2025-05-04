@@ -6,4 +6,5 @@ admin.site.register(Misto)
 admin.site.register(Urad)
 admin.site.register(Exekutor)
 admin.site.register(Predmet)
+admin.site.register(Zajemce)
 

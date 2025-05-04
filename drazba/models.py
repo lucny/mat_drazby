@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.db import models
 
@@ -81,3 +82,27 @@ class Predmet(models.Model):
 
     def __str__(self):
         return f'{self.oznaceni} ({self.misto})'
+
+
+class Zajemce(models.Model):
+    TYPY_ZAJEMCU = (
+        ('FO', 'Fyzická osoba'),
+        ('PO', 'Právnická osoba'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Uživatel')
+    telefon = models.CharField(max_length=16, verbose_name='Telefon', validators=[TELEFON_REGEX],
+                               help_text='Telefonní číslo ve tvaru: +420 123 456 789',
+                               error_messages={'invalid': 'Neplatné telefonní číslo', 'blank': 'Pole nesmí být prázdné'})
+    datum_registrace = models.DateTimeField(auto_now_add=True, verbose_name='Datum registrace')
+    typ = models.CharField(max_length=2, choices=TYPY_ZAJEMCU, verbose_name='Typ zájemce')
+    poznamka = models.TextField(blank=True, null=True, verbose_name='Poznámka')
+    predmety = models.ManyToManyField('Predmet', related_name='zajemci', verbose_name='Předměty zájmu')
+
+    class Meta:
+        verbose_name = 'Zájemce'
+        verbose_name_plural = 'Zájemci'
+        ordering = ['datum_registrace']
+
+    def __str__(self):
+        return f'{self.user.get_full_name()} ({self.get_typ_display()})'

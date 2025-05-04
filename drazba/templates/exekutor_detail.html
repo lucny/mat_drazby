@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 p-3 bg-info">
+        <h2 class="text-white text-center">Exekutor: {{ exekutor.titul }} {{ exekutor.jmeno }} {{ exekutor.prijmeni }}</h2>
+    </div>
+</div>
+<div class="row mt-3 mb-3">
+    <div class="col-md-4">
+        <h3 class="text-info">Kontakt</h3>
+        <hr>
+        <p><b>{{ exekutor.urad }}</b></p>
+        <p><b>{{ exekutor.urad.mesto }}, {{ exekutor.urad.adresa }}</b></p>
+        <hr>
+        <p>Telefon: <b>{{ exekutor.telefon }}</b></p>
+        <p>Email: <b>{{ exekutor.email }}</b></p>
+    </div>
+    <div class="col-md-8">
+        <h3 class="text-info">Seznam předmětů dražeb</h3>
+        <hr>
+        {% for predmet in exekutor.predmet_set.all %}
+        <div class="row">
+            <div class="col-md-3">
+                {% if predmet.foto %}
+                <p><img src="{{ predmet.foto.url }}" alt="Fotografie předmětu dražby" class="img-fluid"></p>
+                {% else %}
+                <p class="display-4">BEZ FOTKY</p>
+                {% endif %}
+            </div>
+            <div class="col-md-9 bg-light mb-1 p-2">
+                <p class="text-danger"><b>{{ predmet.oznaceni }}</b></p>
+                <p>Číslo jednací: <b>{{ predmet.cislo_jednaci }}</b></p>
+                <p>Čas dražby: <b>{{ predmet.zacatek_drazby }} - {{ predmet.konec_drazby }}</b></p>
+                <p>Počáteční cena: <b>{{ predmet.pocatecni_cena }} Kč</b></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
